@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package apis;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,15 +6,12 @@ import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-//librerias utilizadas del segundo video
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
 import javax.swing.table.DefaultTableModel; //importante sin esta libreria no podemos usar las tablas
-/**
- *
- * @author lglui
- */
+
 public class api_cliente {
     
     private String get (){
