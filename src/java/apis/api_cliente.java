@@ -9,14 +9,18 @@ import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+//librerias utilizadas del segundo video
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONException;
+import javax.swing.table.DefaultTableModel; //importante sin esta libreria no podemos usar las tablas
 /**
  *
  * @author lglui
  */
 public class api_cliente {
     
-    public String get (){
+    private String get (){
         String salida= " ";
         
         try{
@@ -47,4 +51,34 @@ public class api_cliente {
         }
     }
 
+    //verificar esta parte bien segundo video
+    public DefaultTableModel leer(){
+    DefaultTableModel tabla = new DefaultTableModel ();
+    try{
+    String encabezado[]= {"id","Nit","Nombres","Apellidos","Direccion","Telefono","Nacimiento"};// definimos el encabezado de la tabla
+    tabla.setColumnIdentifiers(encabezado);// en este caso tenemos que colocar el seculum...primero
+    String datos[]= new String[7];
+    JSONArray arreglo = new JSONArray(get());
+    for(int indice = 0; indice< arreglo.length();indice++){
+    JSONObject atributo= arreglo.getJSONObject (indice);
+    datos [0]= String.valueOf(atributo.getInt("id_cliente"));
+    datos [1] = atributo.getString("nit");
+    datos [2] = atributo.getString("nombres");
+    datos [3] = atributo.getString("apellidos");
+    datos [4] = atributo.getString("direccion");
+    datos [5] = atributo.getString("telefono");
+    datos [3] = atributo.getString("fecha_nacimiento");
+    tabla.addRow(datos);
+    
+    
+    
+    }
+    }catch(Exception ex){
+    
+     System.out.println("Error tabla:" + ex.getMessage());
+    }
+    return tabla;
+    
+   
+    }
 }
